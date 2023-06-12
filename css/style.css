@@ -29,25 +29,63 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: 60px 2fr 60px 1fr 60px;
 	text-align: center;
-	align-items: stretch;
 }
 
-.prize-display {
+.grid>* {
 	display: flex;
-	flex-wrap: wrap;
-	flex: 1;
-	gap: 20px;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: space-evenly;
 	align-items: center;
-}
 
-.prize {
-	border: 1px solid magenta;
-	height: 100px;
-	width: 100px;
+	height: 100%;
+	width: 100%;
 }
 
 button {
 	height: 40px;
 	width: 100px;
+}
+
+/* MAIN SCREEN - HEADER */
+
+/* MAIN SCREEN - MAP SECTION */
+
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+/* MAIN SCREEN - SCAN BUTTON SECTION */
+
+/* MAIN SCREEN - PRIZES SECTION */
+
+.prize-display {
+	background: #cff;
+	outline: 1px solid #0ff;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 10px;
+
+	padding: 0 5px;
+	width: 80%;
+	height: 150px;
+
+	overflow: auto;
+}
+
+.prize {
+	background: #fcf;
+	border: 1px solid #f0f;
+
+	width: 150px;
+	height: 150px;
+}
+
+/* MAIN SCREEN - EXTRA BUTTONS SECTION */
+
+.extra-button-section {
+	flex-direction: row;
+	justify-content: space-evenly;
 }
