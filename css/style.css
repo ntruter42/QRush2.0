@@ -5,14 +5,25 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
 :root {
-	--yinmn-blue: #225588ff;
-	--verdigris: #33aaaaff;
-	--emerald: #55cc99ff;
-	--light-green: #88ee99ff;
-	--tea-green: #ccffccff;
+	--yinmn-blue: #258;
+	--verdigris: #3aa;
+	--emerald: #5c9;
+	--light-green: #8e9;
+	--tea-green: #cfc;
+
+	--bg-color: #0000;
+	--bg-color-2: #0000;
+	--txt-color: black;
+	--btn-color: var(--tea-green);
+
+	--border: 0.125rem solid black;
 
 	font-family: 'Poppins', 'Geologica', 'Alegreya Sans', sans-serif;
-	font-size: 16px;
+	font-size: 20px;
+}
+
+body {
+	color: var(--txt-color);
 }
 
 .container {
@@ -20,71 +31,133 @@
 	width: 100%;
 }
 
-.container>* {
-	border: 1px solid lightgrey;
-}
-
 .grid {
 	display: grid;
 	grid-template-columns: 1fr;
+}
+
+.grid-main {
 	grid-template-rows: 60px 2fr 60px 1fr 60px;
-	text-align: center;
+}
+
+.grid-scan {
+	grid-template-rows: 60px 1fr 60px;
 }
 
 .grid>* {
+	outline: 1px solid #0008;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
 
-	height: 100%;
 	width: 100%;
+	height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-variant-caps: small-caps;
 }
 
 button {
-	height: 40px;
-	width: 100px;
+	background: var(--btn-color);
+	color: var(--txt-color);
+	border: var(--border);
+	box-shadow: 0 4px;
+
+	/* height: 40px;
+	width: 120px; */
+	padding: 5px 10px;
+	border-radius: 0.5rem 1rem 0;
+
+	cursor: pointer;
+}
+
+button:active {
+	box-shadow: 0 1px;
 }
 
 /* MAIN SCREEN - HEADER */
 
+header {
+	background: var(--bg-color-2);
+}
+
+header a {
+	background: var(--btn-color);
+	border: var(--border);
+	box-shadow: 0 -4px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
+	border-radius: 0.5rem 1rem 0;
+}
+
+header a:active {
+	box-shadow: 0 -2px;
+}
+
 /* MAIN SCREEN - MAP SECTION */
 
+.map-section {
+	background: var(--bg-color);
+}
+
 #map {
-	height: 100%;
-	width: 100%;
+	border: var(--border);
+
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
+	border-radius: 1rem 3rem 0;
+	margin: auto;
+
+	overflow: hidden;
 }
 
 /* MAIN SCREEN - SCAN BUTTON SECTION */
 
+.scan-button-section {
+	background: var(--bg-color-2);
+}
+
 /* MAIN SCREEN - PRIZES SECTION */
 
 .prize-section {
+	background: var(--bg-color);
+
 	padding: 10px 0;
 }
 
 .prize-display {
-	background: #0ff2;
-	outline: 1px solid #0ff;
-
+	/* TODO: use grid layout */
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: space-around;
 
 	width: 80%;
 	height: 200px;
-	
+
 	overflow: auto;
 }
 
 .prize {
 	border: 2px solid #000;
 
-	border-radius: 0rem;
 	width: 92px;
 	height: 92px;
 	margin: 0.2rem;
-	
+	border-radius: 1rem;
+
 	overflow: hidden;
 }
 
@@ -98,6 +171,29 @@ button {
 /* MAIN SCREEN - EXTRA BUTTONS SECTION */
 
 .extra-button-section {
+	background: var(--bg-color-2);
+
 	flex-direction: row;
-	justify-content: space-evenly;
+}
+
+/* SCAN SCREEN - SCAN SECTION */
+
+#reader {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+}
+
+#reader__scan_region {
+	border-radius: 2rem;
+
+	overflow: hidden;
+}
+
+#html5-qrcode-button-camera-start,
+#html5-qrcode-button-camera-stop {
+	font-variant-caps: small-caps;
 }

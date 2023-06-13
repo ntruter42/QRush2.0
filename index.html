@@ -8,18 +8,20 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
 		integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
 		integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
-		crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-	<div class="grid container">
+	<div class="grid-main grid container">
 		<header>
-			<h1>QRush2.0</h1>
+			<a href="./index.html">
+				<h1>QRush2.0</h1>
+			</a>
 		</header>
 
 		<section class="map-section">
@@ -27,18 +29,27 @@
 		</section>
 
 		<section class="scan-button-section">
-			<a href="#"><button class="scan-button">SCAN</button></a>
+			<a href="./scan.html"><button class="scan-button">SCAN</button></a>
 		</section>
 
 		<section class="prize-section">
 			<h2>Prizes Up For Grabs</h2>
-			<div class="prize-display">
-				<div class="prize"><img src="assets/img/prizes/apple_voucher_1.png" alt=""></div>
-				<div class="prize"><img src="assets/img/prizes/checkers_card-2.png" alt=""></div>
-				<div class="prize"><img src="assets/img/prizes/picknpay_card-2.png" alt=""></div>
-				<div class="prize"><img src="assets/img/prizes/spar-card-2.png" alt=""></div>
-				<div class="prize"><img src="assets/img/prizes/takelot_voucher.png" alt=""></div>
-				<div class="prize"><img src="assets/img/prizes/woolies_card-2.png" alt=""></div>
+			<div class="prize-display unclaimed">
+				<div class="prize"><a href="#"><img src="assets/img/prizes/apple_voucher_1.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/checkers_card-2.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/picknpay_card-2.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/spar-card-2.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/takelot_voucher.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/woolies_card-2.png" alt=""></a></div>
+			</div>
+
+			<div class="prize-display claimed hidden">
+				<div class="prize"><a href="#"><img src="assets/img/prizes/apple_voucher_1.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/checkers_card-2.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/picknpay_card-2.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/spar-card-2.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/takelot_voucher.png" alt=""></a></div>
+				<div class="prize"><a href="#"><img src="assets/img/prizes/woolies_card-2.png" alt=""></a></div>
 			</div>
 		</section>
 
@@ -47,7 +58,7 @@
 			<a href="#"><button class="sponsor-button">SPONSOR</button></a>
 		</section>
 
-		<footer class="hidden attribution-links">
+		<footer class="attribution-links hidden">
 			<a href="https://www.flaticon.com/free-icons/business-and-finance" title="business and finance icons">
 				Business and finance icons created by pictranoosa - Flaticon
 			</a>

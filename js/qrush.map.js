@@ -8,9 +8,7 @@ function drawMap(lat, lon, zoom) {
 	let map = L.map('map').setView([lat, lon], zoom);
 	
 	// draw map
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-	}).addTo(map);
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 	return map;
 }
