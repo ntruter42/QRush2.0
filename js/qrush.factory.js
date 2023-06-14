@@ -1,8 +1,11 @@
 function QRush() {
 	let chests = {};
+	let prizes = {};
 
-	function setChests(chestsInput) {
-		chests = chestsInput;
+	//////////////////// CHEST functions ////////////////////
+
+	function setChests(chestsObject) {
+		chests = chestsObject;
 	}
 
 	function getChests() {
@@ -25,12 +28,44 @@ function QRush() {
 		return 1000;
 	}
 
+	//////////////////// PRIZE functions ////////////////////
+
+	function setPrizes(prizesObject) {
+		prizes = prizesObject;
+	}
+
+	function getPrizes() {
+		return prizes;
+	}
+
+	function addPrize() {
+		// TODO: finish this function
+		prizes[newPrizeID()] = {};
+	}
+
+	function removePrize(id) {
+		delete prizes[id];
+	}
+
+	function newPrizeID() {
+		const prizeIDs = Object.keys(prizes);
+		if (prizeIDs.length > 0) {
+			return parseInt(prizeIDs[prizeIDs.length - 1]) + 1;
+		}
+		return 2000;
+	}
+
 	return {
 		setChests,
 		getChests,
 		addChest,
 		removeChest,
-
 		newChestID,
+
+		setPrizes,
+		getPrizes,
+		addPrize,
+		removePrize,
+		newPrizeID,
 	};
 }

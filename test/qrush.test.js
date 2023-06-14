@@ -33,7 +33,7 @@ describe("QRush Factory Function", function () {
 	let dummyKnownChests = [1000, 1004, 1005];
 	let dummyClaimedPrizes = [2000, 2002];
 
-	let newChest = { 'chest_id': 1006, 'prize_ids': [], 'location': [-33.920699, 18.421795] };
+	let newChest = { 'prize_ids': [], 'location': [-33.920699, 18.421795] };
 	let newChestInfo = { 'location': [-33.920699, 18.421795] };
 
 	let newPrize = { 'prize_id': 2004, 'sponsor_id': 3004, 'prize_title': "Food Lover's 30% Discount", 'count': 50, 'url': "./img/prizes/food_lover_30percent_discount.jpg" };
@@ -56,20 +56,37 @@ describe("QRush Factory Function", function () {
 
 	describe("setChests, getChests", function () {
 		it("should set chests using dummy info and return the same dummy info", function () {
-			let chests = dummyChests;
-
-			qRush.setChests(chests);
-			assert.deepEqual(qRush.getChests(), chests);
+			qRush.setChests(dummyChests);
+			assert.deepEqual(qRush.getChests(), dummyChests);
 		});
 	});
 
 	describe("addChest, removeChest", function () {
 		it("should be able to add a chest", function () {
-			let chests = dummyChests;
+			const expectedChests = JSON.parse(JSON.stringify(dummyChests));
+			expectedChests[1006] = newChest;
 
-			qRush.setChests(chests);
+			qRush.setChests(dummyChests);
 			qRush.addChest(newChestInfo.location);
-			assert.deepEqual(qRush.getChests(), chests);
+			assert.deepEqual(qRush.getChests(), expectedChests);
+		});
+	});
+
+	describe("setPrizes, getPrizes", function () {
+		it("should set prizes using dummy info and return the same dummy info", function () {
+			qRush.setChests(dummyPrizes);
+			assert.deepEqual(qRush.getPrizes(), dummyPrizes);
+		});
+	});
+
+	describe("addPrize, removePrize", function () {
+		it("should be able to add a prize", function () {
+			const expectedPrizes = JSON.parse(JSON.stringify(dummyPrizes));
+			expectedPrizes[1006] = newChest;
+
+			qRush.setPrizes(dummyPrizes);
+			// qRush.addPrize();
+			assert.deepEqual(qRush.getPrizes(), expectedPrizes);
 		});
 	});
 
