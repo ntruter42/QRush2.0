@@ -1,39 +1,52 @@
-let latitude = -33.92835836470535;
-let longitude = 18.423887682529877;
-let zoomLevel = 15;
 
-function drawMap([lat, lon], zoom) {
-	// create map object
-	let map = L.map('map').setView([lat, lon], zoom);
+function QMap() {
+	var map = {};
+	var markers = [];
 
-	// draw map
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+	function drawMap([lat, lon], zoom) {
+		map = L.map('map').setView([lat, lon], zoom);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+	}
 
-	// return map object
-	return map;
+	function addMarker(mLat, mLon) {
+		let marker = L.marker([mLat, mLon]).addTo(map);
+		markers.push(marker);
+	}
+
+	function userLocation() {
+		map.locate({ setView: true, maxZoom: 18 });
+
+		map.on('locationfound', function (e) {
+			let radius = e.accuracy;
+
+			L.marker(e.latlng).addTo(map)
+				.bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+			L.circle(e.latlng, radius).addTo(map);
+		});
+
+		map.on('locationerror', function (e) {
+			alert(e.message);
+		});
+	}
+
+	function addressToCoordinates(address) {
+		let coordinates = [0, 0];
+		// convert address string into coordinates list => [latitude, longitude]
+		return coordinates;
+	}
+
+	return {
+		drawMap,
+		addMarker,
+		userLocation,
+		addressToCoordinates,
+	};
 }
 
-function addMarker(mLat, mLon, map) {
-	// create marker object and add it to the map
-	let marker = L.marker([mLat, mLon]).addTo(map);
-}
+// let latitude = -33.92835836470535;
+// let longitude = 18.423887682529877;
+// let zoomLevel = 15;
 
-let map = drawMap([latitude, longitude], zoomLevel);
-
-// map.locate({ setView: true, maxZoom: 16 });
-// function onLocationFound(e) {
-// 	var radius = e.accuracy;
-
-// 	L.marker(e.latlng).addTo(map)
-// 		.bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-// 	L.circle(e.latlng, radius).addTo(map);
-// }
-
-// map.on('locationfound', onLocationFound);
-
-// function onLocationError(e) {
-// 	alert(e.message);
-// }
-
-// map.on('locationerror', onLocationError);
+// let qMap = QMap();
+// qMap.drawMap([latitude, longitude], zoomLevel);
