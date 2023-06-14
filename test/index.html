@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>QRush2.0 Unit Tests</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.7/chai.min.js"></script>
+</head>
+
+<body>
+	<h1>QRush2.0 Unit Tests</h1>
+	<div id="mocha"></div>
+	<script>
+		mocha.setup('bdd');
+		var assert = chai.assert;
+	</script>
+
+	<script src="../js/qrush.factory.js" charset="utf-8"></script>
+	<script src="./qrush.test.js" charset="utf-8"></script>
+
+	<script>
+		mocha.checkLeaks();
+		mocha.run();
+	</script>
+</body>
+
+</html>
