@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
+:root {
+	--bg0-color: #000;
+	--bg1-color: #111;
+	--bg2-color: #222;
+	--bg3-color: #444;
+	--bg4-color: #888;
+	--txt-color: #fff;
+	--accent-color: #0ff;
+	
+	font-family: 'Lato', 'Segoe UI', sans-serif;
+}
+
+body {
+	background: var(--bg1-color) !important;
+}
+
+#heading {
+	padding: 0 0 0 1.5rem;
+}
+
+#mocha {
+	border: 1px solid var(--bg4-color);
+	border-radius: 0.5rem;
+	padding: 1rem 1rem 0 0;
+}
+
+#mocha h1 {
+	background: var(--bg2-color);
+	border-radius: 0.25rem;
+	padding: 0.25rem 0 0 0.5rem;
+	margin: 0 0 0.25rem 0;
+}
+
+#mocha .test.pass::before {
+	color: var(--accent-color);
+}
+
+#mocha-stats {
+	background: linear-gradient(90deg, #0000, #0000, var(--bg2-color));
+	border-radius: 10rem;
+	padding: 0.35rem 0 0 0.75rem !important;
+}
+
+#mocha-stats:hover {
+	background: var(--bg2-color);
+}
+
+#mocha .progress canvas {
+	background: var(--bg3-color);
+	border-radius: 10rem;
+}
+
+#mocha #mocha-stats:hover .progress canvas {
+	background: var(--bg2-color);
+}
+
+.suite li {
+	margin-bottom: 1rem !important;
+}
+
+#mocha .test pre {
+	border: 1px solid var(--bg4-color);
+}
+
+#mocha .test a.replay {
+	background: #0000;
+	transform: scale(1.5);
+}
+
+#mocha .test:hover a.replay {
+	box-shadow: none;
+	color: var(--accent-color) !important;
+}

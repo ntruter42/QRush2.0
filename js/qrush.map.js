@@ -2,14 +2,14 @@ let latitude = -33.92835836470535;
 let longitude = 18.423887682529877;
 let zoomLevel = 15;
 
-function drawMap(lat, lon, zoom) {
+function drawMap([lat, lon], zoom) {
 	// create map object
-	// let map = L.map('map').locate({setView: true, maxZoom: 16});
 	let map = L.map('map').setView([lat, lon], zoom);
-	
+
 	// draw map
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
+	// return map object
 	return map;
 }
 
@@ -18,7 +18,7 @@ function addMarker(mLat, mLon, map) {
 	let marker = L.marker([mLat, mLon]).addTo(map);
 }
 
-let map = drawMap(latitude, longitude, zoomLevel);
+let map = drawMap([latitude, longitude], zoomLevel);
 
 // map.locate({ setView: true, maxZoom: 16 });
 // function onLocationFound(e) {
