@@ -2,15 +2,21 @@
 function QMap() {
 	var map = {};
 	var markers = [];
+	var circles = [];
 
-	function drawMap([lat, lon], zoom) {
-		map = L.map('map').setView([lat, lon], zoom);
+	function drawMap(location, zoom) {
+		map = L.map('map').setView(location, zoom);
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 	}
 
-	function addMarker(mLat, mLon) {
-		let marker = L.marker([mLat, mLon]).addTo(map);
+	function addMarker(location) {
+		let marker = L.marker(location).addTo(map);
 		markers.push(marker);
+	}
+
+	function addCircle(location) {
+		let circle = L.circle(location, 500).addTo(map);
+		circles.push(circle);
 	}
 
 	function userLocation() {
@@ -39,14 +45,16 @@ function QMap() {
 	return {
 		drawMap,
 		addMarker,
+		addCircle,
 		userLocation,
 		addressToCoordinates,
 	};
 }
 
-// let latitude = -33.92835836470535;
-// let longitude = 18.423887682529877;
-// let zoomLevel = 15;
+let startLocation = [-33.92835836470535, 18.423887682529877];
+let zoomLevel = 15;
 
-// let qMap = QMap();
-// qMap.drawMap([latitude, longitude], zoomLevel);
+let qMap = QMap();
+qMap.drawMap(startLocation, zoomLevel);
+qMap.addMarker(startLocation);
+qMap.addCircle(startLocation);

@@ -2,6 +2,9 @@ function QRush() {
 	let chests = {};
 	let prizes = {};
 	let sponsors = {};
+	let knownChests = [];
+	let claimedPrizes = [];
+	let playerLevel = 0;
 
 	//////////////////// CHEST functions ////////////////////
 
@@ -29,6 +32,20 @@ function QRush() {
 			return parseInt(chestIDs[chestIDs.length - 1]) + 1;
 		}
 		return 1000;
+	}
+
+	function setKnownChests(chestsList) {
+		knownChests = chestsList;
+	}
+
+	function getKnownChests() {
+		return knownChests;
+	}
+
+	function discoverChest(id) {
+		if (chests[id]) {
+			knownChests.push(id);
+		}
 	}
 
 	//////////////////// PRIZE functions ////////////////////
