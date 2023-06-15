@@ -36,8 +36,8 @@ describe("QRush Factory Function", function () {
 	let newChest = { 'prize_ids': [], 'location': [-33.920699, 18.421795] };
 	let newChestInfo = { 'location': [-33.920699, 18.421795] };
 
-	let newPrize = { 'prize_id': 2004, 'sponsor_id': 3004, 'prize_title': "Food Lover's 30% Discount", 'count': 50, 'url': "./img/prizes/food_lover_30percent_discount.jpg" };
-	let newPrizeInfo = { 'prize_title': "Food Lover's 30% Discount", 'count': 50, 'url': "./img/prizes/food_lover_30percent_discount.jpg" };
+	let newPrize = { 'sponsor_id': 3004, 'prize_title': "Food Lover's 30% Discount", 'count': 50, 'url': "./img/prizes/food_lover_30percent_discount.jpg" };
+	let newPrizeInfo = { 'sponsor_id': 3004, 'prize_title': "Food Lover's 30% Discount", 'count': 50, 'url': "./img/prizes/food_lover_30percent_discount.jpg" };
 
 	let newSponsor = { 'sponsor_id': 3004, 'sponsor_name': "Food Lover's Eatery Newspaper House", 'address': "Shop 122, St George's Mall, Church St, Cape Town City Centre, Cape Town, 8001", 'contact': "Brad Glover", 'email': "bradglover@foodlover.com" };
 	let newSponsorInfo = { 'sponsor_name': "Food Lover's Eatery Newspaper House", 'address': "Shop 122, St George's Mall, Church St, Cape Town City Centre, Cape Town, 8001", 'contact': "Brad Glover", 'email': "bradglover@foodlover.com" };
@@ -74,7 +74,7 @@ describe("QRush Factory Function", function () {
 
 	describe("setPrizes, getPrizes", function () {
 		it("should set prizes using dummy info and return the same dummy info", function () {
-			qRush.setChests(dummyPrizes);
+			qRush.setPrizes(dummyPrizes);
 			assert.deepEqual(qRush.getPrizes(), dummyPrizes);
 		});
 	});
@@ -82,10 +82,10 @@ describe("QRush Factory Function", function () {
 	describe("addPrize, removePrize", function () {
 		it("should be able to add a prize", function () {
 			const expectedPrizes = JSON.parse(JSON.stringify(dummyPrizes));
-			expectedPrizes[1006] = newChest;
+			expectedPrizes[2004] = newPrize;
 
 			qRush.setPrizes(dummyPrizes);
-			// qRush.addPrize();
+			qRush.addPrize(newPrizeInfo.sponsor_id, newPrizeInfo.prize_title, newPrizeInfo.count, newPrizeInfo.url);
 			assert.deepEqual(qRush.getPrizes(), expectedPrizes);
 		});
 	});
