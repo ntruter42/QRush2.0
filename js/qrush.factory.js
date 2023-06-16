@@ -43,7 +43,7 @@ function QRush() {
 	}
 
 	function discoverChest(id) {
-		if (chests[id]) {
+		if (chests[id] !== undefined) {
 			knownChests.push(id);
 		}
 	}
@@ -76,6 +76,23 @@ function QRush() {
 		return 2000;
 	}
 
+	function setClaimedPrizes(prizesList) {
+		claimedPrizes = prizesList;
+	}
+
+	function getClaimedPrizes() {
+		return claimedPrizes;
+	}
+
+	function collectPrize(id) {
+		if (prizes[id]) {
+			claimedPrizes.push(id);
+			prizes[id].count -= 1;
+
+			playerLevel = Math.min(Math.floor((Math.max(claimedPrizes.length, 0) - 1) / 9) + 1, 5);
+		}
+	}
+
 	//////////////////// SPONSOR functions ////////////////////
 
 	function setSponsors(sponsorsObject) {
@@ -87,7 +104,7 @@ function QRush() {
 	}
 
 	function addSponsor(sponsor_name, location, contact, email) {
-		let sponsorID = newSponsorID();
+		let sponsorID = getSponsorID(sponsor_name);
 		sponsors[sponsorID] = { 'sponsor_name': sponsor_name, 'location': location, 'contact': contact, 'email': email };
 		return sponsorID;
 	}
@@ -104,6 +121,17 @@ function QRush() {
 		return 3000;
 	}
 
+	function getSponsorID(name) {
+		for (let id in sponsors) {
+			if (sponsors[id].sponsor_name === name) {
+				return id;
+			}
+		}
+		return newSponsorID();
+	}
+
+	//////////////////// LOCATION functions ////////////////////
+
 	return {
 		setChests,
 		getChests,
@@ -111,16 +139,25 @@ function QRush() {
 		removeChest,
 		newChestID,
 
+		setKnownChests,
+		getKnownChests,
+		discoverChest,
+
 		setPrizes,
 		getPrizes,
 		addPrize,
 		removePrize,
 		newPrizeID,
 
+		setClaimedPrizes,
+		getClaimedPrizes,
+		collectPrize,
+
 		setSponsors,
 		getSponsors,
 		addSponsor,
 		removeSponsor,
 		newSponsorID,
+		getSponsorID,
 	};
 }

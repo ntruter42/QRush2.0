@@ -41,11 +41,11 @@ body {
 }
 
 .grid-scan {
-	grid-template-rows: 60px 1fr 60px;
+	grid-template-rows: 60px 1fr 60px 60px;
 }
 
 .grid>* {
-	outline: 1px solid #0008;
+	/* outline: 1px solid #0008; */
 
 	display: flex;
 	flex-direction: column;
@@ -176,11 +176,23 @@ header a:active {
 	flex-direction: row;
 }
 
+/* SCAN SCREEN */
+
+#message {
+	background: var(--tea-green);
+	border: 2px solid var(--light-green);
+
+	text-align: center;
+
+	border-radius: 0.5rem;
+	padding: 10px;
+}
+
 /* SCAN SCREEN - SCAN SECTION */
 
 .scan-section {
-	height: 100%;
 	width: 100%;
+	height: 100%;
 }
 
 #reader {
@@ -189,8 +201,8 @@ header a:active {
 	justify-content: center;
 	align-items: center;
 
-	height: 100%;
 	width: 100%;
+	height: 100%;
 	max-width: 700px;
 }
 
@@ -203,4 +215,25 @@ header a:active {
 #html5-qrcode-button-camera-start,
 #html5-qrcode-button-camera-stop {
 	font-variant-caps: small-caps;
+}
+
+/* SCAN SCREEN - RESULT SECTION */
+
+.result-section {
+	display: flex;
+
+	width: 100%;
+	height: 100%;
+
+	padding: 20px;
+}
+
+#prize-img {
+	border: 2px solid black;
+
+	width: 100%;
+	max-width: 700px;
+	border-radius: 2rem;
+
+	object-fit: cover;
 }

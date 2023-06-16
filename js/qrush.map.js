@@ -58,3 +58,20 @@ let qMap = QMap();
 qMap.drawMap(startLocation, zoomLevel);
 qMap.addMarker(startLocation);
 qMap.addCircle(startLocation);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

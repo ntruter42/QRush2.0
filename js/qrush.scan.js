@@ -8,7 +8,7 @@ function onScanSuccess(decodedText, decodedResult) {
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
-	"reader", { fps: 100, qrbox: 300, aspectRatio: 1, disableFlip: true }
+	"reader", { fps: 100, qrbox: 300, aspectRatio: 1 }
 );
 
-html5QrcodeScanner.render(onScanSuccess);
+// html5QrcodeScanner.render(onScanSuccess);zzz
