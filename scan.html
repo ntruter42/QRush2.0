@@ -5,8 +5,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>QRush2.0 | Scan</title>
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="./assets/icon/barcode-scan.png" type="image/x-icon">
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+		integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+		integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"
+		integrity="sha512-r6rDA7W6ZeQhvl8S7yRVQUKVHdexq+GAlNkNNqVC7YyIV+NwqCTJe2hDWCiffTyRNOeGEzRRJ9ifvRm/HCzGYg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="./js/qrush.factory.js" defer></script>
+	<script src="./js/qrush.scan.js" defer></script>
+	<script src="./js/qrush.dom.js" defer></script>
 </head>
 
 <body>
@@ -17,16 +32,16 @@
 			</a>
 		</header>
 
-		<section class="scan-section hidden">
-			<div id="reader"></div>
+		<section class="scanner-section">
+			<div id="reader" width="500px"></div>
 		</section>
 
-		<section class="result-section">
+		<section class="results-section hidden">
 			<img id="prize-img" src="assets/img/prizes/uber_r200_voucher.webp" alt="">
 		</section>
 
 		<section class="message-section">
-			<span id="message">Awesome find! 🎁<br>Claim your prize now!</span>
+			<span id="message" class="positive">Awesome find! 🎁<br>Claim your prize now!</span>
 		</section>
 
 		<section class="collect-button-section">
@@ -67,10 +82,5 @@
 		</footer>
 	</div>
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"
-	integrity="sha512-r6rDA7W6ZeQhvl8S7yRVQUKVHdexq+GAlNkNNqVC7YyIV+NwqCTJe2hDWCiffTyRNOeGEzRRJ9ifvRm/HCzGYg=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="js/qrush.scan.js"></script>
 
 </html>

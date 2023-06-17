@@ -9,11 +9,15 @@
 	--verdigris: #3aa;
 	--emerald: #5c9;
 	--light-green: #8e9;
+	--bright-red: #e43;
 	--tea-green: #cfc;
+	--rooibos-tea: #fbb;
+	--warning-bg: #e6ddc4;
+	--warning-fg: #bb9966;
 
 	--bg-color: #0000;
 	--bg-color-2: #0000;
-	--txt-color: black;
+	--txt-color: #000;
 	--btn-color: var(--tea-green);
 
 	--border: 0.125rem solid black;
@@ -41,7 +45,7 @@ body {
 }
 
 .grid-scan {
-	grid-template-rows: 60px 1fr 60px 60px;
+	grid-template-rows: 60px 1fr 80px 60px;
 }
 
 .grid>* {
@@ -179,23 +183,44 @@ header a:active {
 /* SCAN SCREEN */
 
 #message {
-	background: var(--tea-green);
-	border: 2px solid var(--light-green);
-
 	text-align: center;
 
 	border-radius: 0.5rem;
 	padding: 10px;
 }
 
+.positive {
+	background: var(--tea-green);
+	border: 2px solid var(--light-green);
+}
+
+.negative {
+	background: var(--rooibos-tea);
+	border: 2px solid var(--bright-red);
+}
+
+.neutral {
+	background: var(--warning-bg);
+	border: 2px solid var(--warning-fg);
+}
+
 /* SCAN SCREEN - SCAN SECTION */
 
-.scan-section {
-	width: 100%;
+.scanner-section {
+	outline: 2px solid white;
+	border: 2px solid white;
+	box-shadow: inset 0 0 5px 5px white, 0 0 5px 5px white;
+
+	z-index: -1;
+
+	width: calc(100% - 1.6rem);
 	height: 100%;
+	margin: auto;
+	/* padding: 0.8rem; */
 }
 
 #reader {
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -203,7 +228,7 @@ header a:active {
 
 	width: 100%;
 	height: 100%;
-	max-width: 700px;
+	max-width: 600px;
 }
 
 #reader__scan_region {
@@ -219,20 +244,19 @@ header a:active {
 
 /* SCAN SCREEN - RESULT SECTION */
 
-.result-section {
+.results-section {
 	display: flex;
 
 	width: 100%;
 	height: 100%;
-
-	padding: 20px;
+	padding: 0.8rem;
 }
 
 #prize-img {
-	border: 2px solid black;
+	border: var(--border);
 
 	width: 100%;
-	max-width: 700px;
+	max-width: 660px;
 	border-radius: 2rem;
 
 	object-fit: cover;

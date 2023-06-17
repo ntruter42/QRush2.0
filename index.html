@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>QRush2.0 | Home</title>
-	<link rel="shortcut icon" href="./assets/img/barcode-scan.png" type="image/x-icon">
+	<link rel="shortcut icon" href="./assets/icon/barcode-scan.png" type="image/x-icon">
 	<link rel="stylesheet" href="./css/normalize.css">
 	<link rel="stylesheet" href="./css/style.css">
 
@@ -15,8 +15,16 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
 		integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+		integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</script>
 
-	<script type="text/x-template" class="prizeTemplate">
+	<script src="./js/qrush.factory.js" defer></script>
+	<script src="./js/qrush.map.js" defer></script>
+	<script src="./js/qrush.dom.js" defer></script>
+
+	<script type="text/x-template" class="day-template">
 		{{#each users}}
 		<div class="prize"><a href="#"><img src="{{url}}" alt="{{title}}"></a></div>
 		{{/each}}
@@ -99,9 +107,5 @@
 		</footer>
 	</div>
 </body>
-
-<script src="../js/qrush.map.js" charset="utf-8"></script>
-<script src="../js/qrush.factory.js" charset="utf-8"></script>
-<script src="../js/qrush.dom.js" charset="utf-8"></script>
 
 </html>
