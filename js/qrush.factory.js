@@ -29,9 +29,9 @@ function QRush() {
 	function newChestID() {
 		const chestIDs = Object.keys(chests);
 		if (chestIDs.length > 0) {
-			return parseInt(chestIDs[chestIDs.length - 1]) + 1;
+			return String(parseInt(chestIDs[chestIDs.length - 1]) + 1);
 		}
-		return 1000;
+		return "1000";
 	}
 
 	function setKnownChests(chestsList) {
@@ -43,9 +43,11 @@ function QRush() {
 	}
 
 	function discoverChest(id) {
-		if (chests[id] !== undefined) {
+		if (chests[id]) {
 			knownChests.push(id);
+			return true;
 		}
+		return false;
 	}
 
 	//////////////////// PRIZE functions ////////////////////
@@ -71,9 +73,9 @@ function QRush() {
 	function newPrizeID() {
 		const prizeIDs = Object.keys(prizes);
 		if (prizeIDs.length > 0) {
-			return parseInt(prizeIDs[prizeIDs.length - 1]) + 1;
+			return String(parseInt(prizeIDs[prizeIDs.length - 1]) + 1);
 		}
-		return 2000;
+		return "2000";
 	}
 
 	function setClaimedPrizes(prizesList) {
@@ -85,11 +87,11 @@ function QRush() {
 	}
 
 	function collectPrize(id) {
-		if (prizes[id]) {
+		if (prizes[id] && prizes[id].count > 0) {
 			claimedPrizes.push(id);
 			prizes[id].count -= 1;
 
-			playerLevel = Math.min(Math.floor((Math.max(claimedPrizes.length, 0) - 1) / 9) + 1, 5);
+			updatePlayerLevel();
 		}
 	}
 
@@ -116,9 +118,9 @@ function QRush() {
 	function newSponsorID() {
 		const sponsorIDs = Object.keys(sponsors);
 		if (sponsorIDs.length > 0) {
-			return parseInt(sponsorIDs[sponsorIDs.length - 1]) + 1;
+			return String(parseInt(sponsorIDs[sponsorIDs.length - 1]) + 1);
 		}
-		return 3000;
+		return "3000";
 	}
 
 	function getSponsorID(name) {
@@ -132,13 +134,34 @@ function QRush() {
 
 	//////////////////// LOCATION functions ////////////////////
 
+	//////////////////// PLAYER functions ////////////////////
+
+	function updatePlayerLevel() {
+		if (claimedPrizes.length < 1) {
+			playerLevel = 0;
+		} else if (claimedPrizes.length < 10) {
+			playerLevel = 1;
+		} else if (claimedPrizes.length < 20) {
+			playerLevel = 2;
+		} else if (claimedPrizes.length < 50) {
+			playerLevel = 3;
+		} else if (claimedPrizes.length < 100) {
+			playerLevel = 4;
+		} else if (claimedPrizes.length < 200) {
+			playerLevel = 5;
+		}
+	}
+
+	function getPlayerLevel() {
+		return playerLevel;
+	}
+
 	return {
 		setChests,
 		getChests,
 		addChest,
 		removeChest,
 		newChestID,
-
 		setKnownChests,
 		getKnownChests,
 		discoverChest,
@@ -148,7 +171,6 @@ function QRush() {
 		addPrize,
 		removePrize,
 		newPrizeID,
-
 		setClaimedPrizes,
 		getClaimedPrizes,
 		collectPrize,
@@ -159,5 +181,8 @@ function QRush() {
 		removeSponsor,
 		newSponsorID,
 		getSponsorID,
+
+		updatePlayerLevel,
+		getPlayerLevel,
 	};
 }
